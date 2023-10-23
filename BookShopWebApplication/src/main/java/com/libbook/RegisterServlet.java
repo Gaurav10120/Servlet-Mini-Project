@@ -59,9 +59,9 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // Provide links for navigation
-        out.println("<a href='home.html'>Home</a>");
+        out.println("<a href='home.html' style='color: red;'>Home</a>");
         out.println("<br>");
-        out.println("<a href='bookList'>Book List</a>");
+        out.println("<a href='bookList' style='color: green;'>Book List</a>");
     }
 
     @Override

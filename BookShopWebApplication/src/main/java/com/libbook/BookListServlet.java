@@ -30,21 +30,21 @@ public class BookListServlet extends HttpServlet {
             if (conn != null) {
                 // Prepare an SQL statement to select book information
                 PreparedStatement stmt = conn.prepareStatement("SELECT BID, BOOKNAME, BOOKEDITION, BOOKPRICE FROM BOOKDATA");
-                
+
                 // Execute the SQL query and retrieve the results
                 ResultSet rs = stmt.executeQuery();
-                
+
                 // Generate an HTML table to display book information
                 out.println("<table border='1' align='center'>");
                 out.println("<tr>");
-                out.println("<th>Book Id</th>");
-                out.println("<th>Book Name</th>");
-                out.println("<th>Book Edition</th>");
-                out.println("<th>Book Price</th>");
-                out.println("<th>Edit</th>");
-                out.println("<th>Delete</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Book Id</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Book Name</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Book Edition</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Book Price</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Edit</th>");
+                out.println("<th style='background-color: lightgray; color: black;'>Delete</th>");
                 out.println("</tr>");
-                
+
                 // Loop through the result set and populate the table
                 while (rs.next()) {
                     out.println("<tr>");
@@ -52,13 +52,14 @@ public class BookListServlet extends HttpServlet {
                     out.println("<td>" + rs.getString(2) + "</td>");
                     out.println("<td>" + rs.getString(3) + "</td>");
                     out.println("<td>" + rs.getFloat(4) + "</td>");
-                    out.println("<td><a href='editScreen?id=" + rs.getInt(1) + "'>Edit</a></td>");
-                    out.println("<td><a href='deleteurl?id=" + rs.getInt(1) + "'>Delete</a></td>");
+                    out.println("<td><a href='editScreen?id=" + rs.getInt(1) + "' style='color: blue;'>Edit</a></td>");
+                    out.println("<td><a href='deleteurl?id=" + rs.getInt(1) + "' style='color: red;'>Delete</a></td>");
                     out.println("</tr>");
                 }
-                
+
                 out.println("</table>");
             }
+
         } catch (Exception ex) {
             // Handle exceptions and display an error message
             out.println("Error is = " + ex);

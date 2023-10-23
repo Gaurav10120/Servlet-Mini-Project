@@ -40,26 +40,27 @@ public class EditScreenServlet extends HttpServlet {
 
                 if (rs.next()) {
                     // Display a form to edit book details
-                    out.println("<form action='editurl?id=" + id + "' method='post'>");
-                    out.println("<table align='center'>");
-                    out.println("<tr>");
-                    out.println("<td>Book Name</td>");
-                    out.println("<td><input type='text' name='bookName' value='" + rs.getString("BOOKNAME") + "'></td>");
-                    out.println("</tr>");
-                    out.println("<tr>");
-                    out.println("<td>Book Edition</td>");
-                    out.println("<td><input type='text' name='bookEdition' value='" + rs.getString("BOOKEDITION") + "'></td>");
-                    out.println("</tr>");
-                    out.println("<tr>");
-                    out.println("<td>Book Price</td>");
-                    out.println("<td><input type='text' name='bookPrice' value='" + rs.getFloat("BOOKPRICE") + "'></td>");
-                    out.println("</tr>");
-                    out.println("<tr>");
-                    out.println("<td><input type='submit' value='Edit'></td>");
-                    out.println("<td><input type='reset' value='Cancel'></td>");
-                    out.println("</tr>");
-                    out.println("</table>");
-                    out.println("</form>");
+                	out.println("<form action='editurl?id=" + id + "' method='post'>");
+                	out.println("<table align='center'>");
+                	out.println("<tr>");
+                	out.println("<td style='color: blue;'>Book Name</td>");
+                	out.println("<td><input type='text' name='bookName' value='" + rs.getString("BOOKNAME") + "'></td>");
+                	out.println("</tr>");
+                	out.println("<tr>");
+                	out.println("<td style='color: green;'>Book Edition</td>");
+                	out.println("<td><input type='text' name='bookEdition' value='" + rs.getString("BOOKEDITION") + "'></td>");
+                	out.println("</tr>");
+                	out.println("<tr>");
+                	out.println("<td style='color: red;'>Book Price</td>");
+                	out.println("<td><input type='text' name='bookPrice' value='" + rs.getFloat("BOOKPRICE") + "'></td>");
+                	out.println("</tr>");
+                	out.println("<tr>");
+                	out.println("<td><input type='submit' value='Edit'></td>");
+                	out.println("<td><input type='reset' value='Cancel'></td>");
+                	out.println("</tr>");
+                	out.println("</table>");
+                	out.println("</form>");
+
                 } else {
                     out.println("<h2>Record not found.</h2>");
                 }

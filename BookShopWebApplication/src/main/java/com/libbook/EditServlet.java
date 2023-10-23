@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +45,13 @@ public class EditServlet extends HttpServlet {
                         stmt.setFloat(3, bookPrice);
                         stmt.setInt(4, id);
 
-                        int count = stmt.executeUpdate();
-                        if (count == 1) {
-                            out.println("<h2>Record is Edited Successfully</h2>");
+                        int value = stmt.executeUpdate();
+                        if (value > 0) {
+                            // If deletion is successful, forward to the view page
+                            RequestDispatcher r = request.getRequestDispatcher("bookList");
+                            r.forward(request, response);
                         } else {
-                            out.println("<h2>Record is not Edited Successfully</h2>");
+                            out.println("<h1>Some Problem is there ...</h1>");
                         }
                     } catch (NumberFormatException ex) {
                         out.println("<h2>Invalid bookPrice value: It must be a valid number.</h2>");
